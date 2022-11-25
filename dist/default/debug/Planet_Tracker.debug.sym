@@ -1,0 +1,89 @@
+__S0 20000 0 ABS 0
+__S1 1 0 ABS 0
+__S3 0 0 ABS 0
+__Hudata_bank10 0 0 ABS 0
+__Ludata_bank10 0 0 ABS 0
+__Hudata_bank4 0 0 ABS 0
+__Ludata_bank4 0 0 ABS 0
+__Hudata_bank13 0 0 ABS 0
+__Ludata_bank13 0 0 ABS 0
+servoStep 1FFEE 0 CODE 0
+__Hudata_acs 0 0 ABS 0
+__Ludata_acs 0 0 ABS 0
+isa$xinst 0 0 ABS 0
+__Hudata_bank5 0 0 ABS 0
+__Ludata_bank5 0 0 ABS 0
+__Hcode 0 0 ABS 0
+__Lcode 0 0 ABS 0
+__Hdata 0 0 ABS 0
+__Ldata 0 0 ABS 0
+isa$std 1 0 ABS 0
+__Hudata_bank0 0 0 ABS 0
+__Ludata_bank0 0 0 ABS 0
+servoSetup 1FFE0 0 CODE 0
+checkInterrupt 1FFF0 0 CODE 0
+__Hudata_bank11 0 0 ABS 0
+__Ludata_bank11 0 0 ABS 0
+__Hudata_bank6 0 0 ABS 0
+__Ludata_bank6 0 0 ABS 0
+__Hudata_bank14 0 0 ABS 0
+__Ludata_bank14 0 0 ABS 0
+__Hedata 0 0 ABS 0
+__Ledata 0 0 ABS 0
+__Hservo_code 0 0 ABS 0
+__Lservo_code 0 0 ABS 0
+__Hudata 0 0 ABS 0
+__Ludata 0 0 ABS 0
+__Hudata_bank1 0 0 ABS 0
+__Ludata_bank1 0 0 ABS 0
+__Hspace_0 20000 0 ABS 0
+__Lspace_0 0 0 ABS 0
+__Hspace_1 1 0 ABS 0
+__Lspace_1 0 0 ABS 0
+__Hudata_bank7 0 0 ABS 0
+__Ludata_bank7 0 0 ABS 0
+__Hspace_3 0 0 ABS 0
+__Lspace_3 0 0 ABS 0
+__Hudata_bank2 0 0 ABS 0
+__Ludata_bank2 0 0 ABS 0
+__Hudata_bank12 0 0 ABS 0
+__Ludata_bank12 0 0 ABS 0
+__Hudata_bank8 0 0 ABS 0
+__Ludata_bank8 0 0 ABS 0
+__Hudata_bank15 0 0 ABS 0
+__Ludata_bank15 0 0 ABS 0
+__Hudata_bank3 0 0 ABS 0
+__Ludata_bank3 0 0 ABS 0
+__Hudata_bank9 0 0 ABS 0
+__Ludata_bank9 0 0 ABS 0
+%segments
+udata_acs 0 0 COMRAM 0 1
+servo_code 1FFE0 1FFFF CODE 1FFE0 0
+%locals
+build/default/debug/main.o
+C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\proc\\pic18f87k22.inc
+main.s
+5 0 0 CODE 0
+6 0 0 CODE 0
+8 4 0 CODE 0
+9 8 0 CODE 0
+12 C 0 CODE 0
+build/default/debug/servo.o
+C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\proc\\pic18f87k22.inc
+servo.s
+10 1FFE0 0 CODE 0
+11 1FFE2 0 CODE 0
+12 1FFE4 0 CODE 0
+13 1FFE6 0 CODE 0
+14 1FFE8 0 CODE 0
+15 1FFEA 0 CODE 0
+16 1FFEC 0 CODE 0
+19 1FFEE 0 CODE 0
+22 1FFF0 0 CODE 0
+23 1FFF2 0 CODE 0
+24 1FFF4 0 CODE 0
+27 1FFF6 0 CODE 0
+28 1FFF8 0 CODE 0
+30 1FFFA 0 CODE 0
+31 1FFFC 0 CODE 0
+32 1FFFE 0 CODE 0
