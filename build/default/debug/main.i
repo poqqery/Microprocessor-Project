@@ -1,6 +1,9 @@
 # 1 "main.s"
 # 1 "<built-in>" 1
 # 1 "main.s" 2
+CONFIG XINST = OFF ; Extended Instruction Set (Disabled)
+
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\xc.inc" 1 3
 
 
@@ -10956,9 +10959,10 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 5 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\xc.inc" 2 3
-# 2 "main.s" 2
+# 3 "main.s" 2
 
-extrn servoStep, checkInterrupt, servoSetup
+
+extrn checkInterrupt, servoSetup
 psect code, abs
 rst: org 0x0000
  goto start
@@ -10967,6 +10971,7 @@ int_hi: org 0x0008
  goto checkInterrupt
 
 start:
+    call servoSetup
     goto $
 
 end rst

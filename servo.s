@@ -44,7 +44,7 @@ checkInterrupt:
     retfie  f	    ; fast return
 
 pulseLower:
-    movlw   0x16
+    movlw   0x27
     movwf   pulseLower_length
     pulseLower_loop:
 	movf    TMR0L, W, A
@@ -53,7 +53,7 @@ pulseLower:
     return
 
 pulseUpper:
-    movlw   0x16
+    movlw   0x27
     movwf   pulseUpper_length
     pulseUpper_loop:
 	movf    TMR0L, W, A

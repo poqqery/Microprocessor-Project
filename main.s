@@ -11,7 +11,7 @@ int_hi: org 0x0008
 	goto checkInterrupt
 
 start:
-    call servoSetup
+    call servoSetup 
     goto $
 	
 end rst

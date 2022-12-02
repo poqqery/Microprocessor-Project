@@ -1,0 +1,42 @@
+### HEXMate logfile and output summary ###
+
+### Command-line arguments ###
+ dist/default/debug\Microprocessor-Project.debug.hex
+ -Odist/default/debug\Microprocessor-Project.debug.hex
+ -logfile=dist/default/debug\Microprocessor-Project.debug.hxl
+ -addressing=1
+ -break=300000
+
+### Memory Usage ###
+ Intel Hex-file ranges:
+  0h - 3h		(dist/default/debug\Microprocessor-Project.debug.hex)
+  8h - 13h		(dist/default/debug\Microprocessor-Project.debug.hex)
+  1FF9Ah - 1FFFFh		(dist/default/debug\Microprocessor-Project.debug.hex)
+  300000h - 300006h		(dist/default/debug\Microprocessor-Project.debug.hex)
+  300008h - 30000Dh		(dist/default/debug\Microprocessor-Project.debug.hex)
+ Unused ranges:
+  4h - 7h
+  14h - 1FF99h
+  20000h - 2FFFFFh
+  300007h - 300007h
+
+### Hex Memory Map ###
+ Legend:
+  -- = Unused memory
+  H1 = Intel Hex-file         (dist/default/debug\Microprocessor-Project.debug.hex)
+----------------------------------------------------------
+         | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+----------------------------------------------------------
+00000000 | H1 H1 H1 H1 -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1
+00000010 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
+----------------------------------------------------------
+0001FF90 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
+0001FFA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001FFB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001FFC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001FFD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001FFE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001FFF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+----------------------------------------------------------
+00300000 | H1 H1 H1 H1 H1 H1 H1 -- H1 H1 H1 H1 H1 H1 -- --
+00300010 | --

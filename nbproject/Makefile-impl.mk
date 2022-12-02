@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Planet_Tracker
+PROJECTNAME=Microprocessor-Project
 
 # Active Configuration
 DEFAULTCONF=default
