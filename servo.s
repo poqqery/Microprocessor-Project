@@ -43,7 +43,7 @@ checkInterrupt:
     bcf	    TMR0IF
     retfie  f	    ; fast return
 
-pulseLower:
+pulseLower:			    ; raise the voltage for enough time to rotate the lower servo
     movlw   0x27
     movwf   pulseLower_length
     pulseLower_loop:
@@ -52,8 +52,8 @@ pulseLower:
 	bra	pulseLower_loop
     return
 
-pulseUpper:
-    movlw   0x27
+pulseUpper:			    ; raise the voltage for enough time to rotate the upper servo
+    movlw   0x16
     movwf   pulseUpper_length
     pulseUpper_loop:
 	movf    TMR0L, W, A
@@ -62,14 +62,7 @@ pulseUpper:
 	bra	pulseUpper_loop
     return
     
-servo_pulse:	    ; raise the voltage for enough time to rotate the servo
-    movlw   0x28    ; pulse length of 0x16 timer rotations sets the servo to level, 0x25 for 90 degrees
-    movwf   pulse_length
-    pulse_loop:
-	movf    TMR0L, W, A
-	cpfslt  pulse_length
-	bra	pulse_loop
-    return
+
     
 delay:
     movlw   0xFF

@@ -1,8 +1,8 @@
 #include <xc.inc>
     
-extrn	ADC_Setup, ADC_Read
+extrn	ADC_Setup, ADC_Read, select_pin0, pinShiftUp
 
-global	photo_res
+global	photo_res, photo_setup, measure
 
 psect	udata_acs
 diode_number:	ds 1
@@ -15,16 +15,19 @@ photo_setup:
     call ADC_Setup
     movlw   0x04
     movwf   diode_number
+    return
     
 measure:
-    movff   diode_number, counter, A
+    clrf    counter, A
     lfsr    0, photo_res
-    movlw	0x00			; load 0 into W for counter comparison later; this should reduce runtime.
+    movf    diode_number, W, A			; load diode number into W for comparison in loop
+    call select_pin0
     measure_loop:
 	call ADC_Read
-	decf	counter
+	incf	counter
 	movff   ADRESH, POSTINC0, A
 	movff   ADRESL, POSTINC0, A
+	call pinShiftUp
 	cpfseq	counter
 	bra measure_loop
 return
