@@ -1,7 +1,7 @@
 #include <xc.inc>
 
 global checkInterrupt, servoSetup
-
+extrn servoPosUpper, servoPosLower
 psect	udata_acs
     counter:	ds 1
     pulse_length: ds 1
@@ -21,6 +21,10 @@ servoSetup:
     
     bsf	    TMR0IE	; enable interrupts
     bsf	    GIE		; enable global interrupts
+    
+    movlw   0x20
+    movwf   servoPosUpper
+    movwf   servoPosLower
     return
 
 servoUpper:
@@ -44,8 +48,7 @@ checkInterrupt:
     retfie  f	    ; fast return
 
 pulseLower:			    ; raise the voltage for enough time to rotate the lower servo
-    movlw   0x27
-    movwf   pulseLower_length
+    movff   servoPosLower, pulseLower_length, A
     pulseLower_loop:
 	movf    TMR0L, W, A
 	cpfslt  pulseLower_length
@@ -53,8 +56,7 @@ pulseLower:			    ; raise the voltage for enough time to rotate the lower servo
     return
 
 pulseUpper:			    ; raise the voltage for enough time to rotate the upper servo
-    movlw   0x16
-    movwf   pulseUpper_length
+    movff   servoPosUpper, pulseUpper_length, A
     pulseUpper_loop:
 	movf    TMR0L, W, A
 	subfwb	pulseLower_length, W ; set a different 0 time for the upper pulse
