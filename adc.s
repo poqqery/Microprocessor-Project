@@ -12,7 +12,7 @@ ADC_Setup:
     movlb   0x00
     movlw   0x01
     movwf   ADCON0, A
-    movlw   00100000B		    ; use 2.048 voltage reference
+    movlw   00110000B		    ; use 2.048 voltage reference
     movwf   ADCON1, A
     movlw   11110110B		    ; right justified outputs, set clock and acquisition times to Fosc/64
     movwf   ADCON2, A

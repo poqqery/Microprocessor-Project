@@ -1,6 +1,6 @@
 #include <xc.inc>
 
-global checkInterrupt, servoSetup
+global servoSetup, servoUpper, servoLower
 extrn servoPosUpper, servoPosLower
 psect	udata_acs
     counter:	ds 1
@@ -22,7 +22,7 @@ servoSetup:
     bsf	    TMR0IE	; enable interrupts
     bsf	    GIE		; enable global interrupts
     
-    movlw   0x20
+    movlw   0x22
     movwf   servoPosUpper
     movwf   servoPosLower
     return
@@ -39,13 +39,7 @@ servoLower:
     clrf    LATD	; set PORTD low
     return
     
-checkInterrupt:
-    btfss   TMR0IF  ; check interrupt flag
-    retfie  f	    ; return if flag is not set
-    call servoLower
-    call servoUpper
-    bcf	    TMR0IF
-    retfie  f	    ; fast return
+
 
 pulseLower:			    ; raise the voltage for enough time to rotate the lower servo
     movff   servoPosLower, pulseLower_length, A

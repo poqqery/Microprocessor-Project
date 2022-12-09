@@ -47,12 +47,12 @@ findPosUpper:
 	bra	moveUpperDown
 	bra	moveUpperUp
     moveUpperUp:
-	movlw	0x26		    ; limit position to prevent overextension
+	movlw	0x24		    ; limit position to prevent overextension
 	cpfsgt	servoPosUpper
 	incf	servoPosUpper
 	return
     moveUpperDown:
-	movlw	0x17		    ; limit position to prevent underextension
+	movlw	0x16		    ; limit position to prevent underextension and self destruction
 	cpfslt	servoPosUpper
 	decf	servoPosUpper
 	return
