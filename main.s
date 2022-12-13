@@ -8,7 +8,7 @@ extrn gradient, findGradient, findPosUpper, findPosLower, servoPosUpper, servoPo
 extrn UART_Setup, UART_Transmit_Byte
 psect udata_acs
 interrupt_counter: ds 1
-transmission_counter: ds 1
+transmission_bool:  ds 1
 psect code, abs
 rst:	org 0x0000
 	goto start
@@ -19,11 +19,12 @@ int_hi: org 0x0008
 start:
     call servoSetup		    ; set up code for the servos and the photodiode measurements
     call photo_setup
+    call UART_Setup
     
     movlw   0x00		    ; set up the counters for servo pulsing and transmission - interrupts trigger too frequently, and we cannot use a different clock since that makes UART unintelligible
     movwf   interrupt_counter	    
-    movwf   transmission_counter
-    call UART_Setup
+    movwf   transmission_bool
+    
     goto $
 
 checkInterrupt:
@@ -35,17 +36,29 @@ checkInterrupt:
     bra no_servo_interrupt	    ; the UART triggers when there is no servo pulse to avoid using too much time in a single interrupt window
     bra	servo_interrupt
     no_servo_interrupt:
+	movlw	0x00
+	cpfsgt	interrupt_counter
+	bra	send_data
 	incf	interrupt_counter
-	movlw	0x60			; the UART sends data every 96th interrupt
-	cpfseq	transmission_counter	; comparing how many interrupts have triggered since the last time data was sent
-	bra send_data
-	incf	transmission_counter
-	retfie f
+	retfie	f
 	send_data:			; this branch sends the position of the upper servo out via UART
-	    movf    servoPosUpper, W, A
-	    call UART_Transmit_Byte
-	    clrf    transmission_counter    ; clear interrupts since last transmission
-	    retfie f
+	    incf	interrupt_counter
+	    movlw   0xFF
+	    cpfseq  transmission_bool
+	    bra	    send_upper
+	    bra	    send_lower
+	    send_upper:
+		movf    servoPosUpper, W, A
+		call UART_Transmit_Byte
+		movlw	0xFF
+		movwf	transmission_bool
+		retfie f
+	    send_lower:
+		movf    servoPosLower, W, A
+		call UART_Transmit_Byte
+		movlw	0x00
+		movwf	transmission_bool
+		retfie f
     servo_interrupt:			; send a pulse to the servos
 	call photo_main			; measure the gradient to adjust servo positions
 	call servoLower			; pulse the lower servo
@@ -65,4 +78,6 @@ photo_main:
     call findPosLower
     return
 
+
+	
 end rst
