@@ -4,7 +4,7 @@ CONFIG  XINST = OFF            ; Extended Instruction Set (Disabled)
 
 extrn servoSetup, servoLower, servoUpper
 extrn measure, photo_res, photo_setup
-extrn gradient, findGradient, findPosUpper, findPosLower, servoPosUpper, servoPosLower
+extrn gradient, findGradient, findPosUpper, findPosLower, servoPosUpper, servoPosLower, findPosPD
 extrn UART_Setup, UART_Transmit_Byte
 psect udata_acs
 interrupt_counter: ds 1
@@ -68,14 +68,7 @@ checkInterrupt:
     
 photo_main:
     call measure
-    lfsr	1, photo_res
-    lfsr	2, photo_res + 2
-    call findGradient
-    call findPosUpper		; changes servo position variable - servo adjusts automatically due to interrupts
-    lfsr	1, photo_res + 4
-    lfsr	2, photo_res + 6
-    call findGradient
-    call findPosLower
+    ;call findPosPD
     return
 
 
